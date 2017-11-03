@@ -1,0 +1,28 @@
+language: c
+compiler:
+  # - clang
+  # - gcc
+env:
+  global:
+  matrix:
+  - GLIB=glib-2.54.2
+addons:
+  apt:
+    sources:
+    # - ubuntu-toolchain-r-test
+    packages:
+    # as requested by configure
+    # - gcc-4.9
+before_install:
+- apt-cache policy libglib2.0-dev
+install:
+- wget https://git.gnome.org/browse/glib/snapshot/$GLIB.tar.xz
+- tar --xz --extract --file=$GLIB.tar.xz
+- ls --color
+- cd $GLIB
+- ls --color
+- cat INSTALL
+- ./configure --help
+
+script:
+- make && make test && make install
