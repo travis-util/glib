@@ -5,8 +5,9 @@ compiler:
 env:
   global:
   matrix:
-  - GLIB=glib-2.40.2 GLIB_VERSION=2.40
-  # - GLIB=glib-2.54.2
+  - GLIB=glib-2.41.5 GLIB_VERSION=2.41
+  # - GLIB=glib-2.40.2 GLIB_VERSION=2.40 # OK
+  - GLIB=glib-2.54.2 GLIB_VERSION=2.54
 addons:
   apt:
     sources:
