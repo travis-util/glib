@@ -24,9 +24,10 @@ install:
 - ls --color
 - cd $GLIB
 - ls --color
-# - cat INSTALL
+- cat INSTALL
 - ./configure --help
 - ./configure --prefix=/tmp/local
 
 script:
-- make && make test && make install
+- make && make install
+- make test || true
