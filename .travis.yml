@@ -8,8 +8,9 @@ env:
   - GLIB=glib-2.41.5 GLIB_VERSION=2.41
   # - GLIB=glib-2.40.2 GLIB_VERSION=2.40 # OK
   - GLIB=glib-2.54.2 GLIB_VERSION=2.54
-    allow_failures:
-    - env: GLIB=glib-2.54.2 # libmount-dev (2.20.1-5.1ubuntu20.9) from Ubuntu 14.04 probably too old.
+matrix:
+  allow_failures:
+  - env: GLIB=glib-2.54.2 # libmount-dev (2.20.1-5.1ubuntu20.9) from Ubuntu 14.04 probably too old.
 addons:
   apt:
     sources:
