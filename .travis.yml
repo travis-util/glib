@@ -16,12 +16,13 @@ addons:
 before_install:
 - apt-cache policy libglib2.0-dev
 install:
-- wget https://git.gnome.org/browse/glib/snapshot/$GLIB.tar.xz
+- wget http://ftp.gnome.org/pub/gnome/sources/glib/2.54/$GLIB.tar.xz # 35s
+# - wget https://git.gnome.org/browse/glib/snapshot/$GLIB.tar.xz # 35s
 - tar --xz --extract --file=$GLIB.tar.xz
 - ls --color
 - cd $GLIB
 - ls --color
-- cat INSTALL
+# - cat INSTALL
 - ./configure --help
 
 script:
