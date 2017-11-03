@@ -5,7 +5,7 @@ compiler:
 env:
   global:
   matrix:
-  - GLIB=glib-2.40.2
+  - GLIB=glib-2.40.2 GLIB_VERSION=2.40
   # - GLIB=glib-2.54.2
 addons:
   apt:
@@ -18,7 +18,7 @@ addons:
 before_install:
 - apt-cache policy libglib2.0-dev libmount-dev libelf-dev
 install:
-- wget http://ftp.gnome.org/pub/gnome/sources/glib/2.54/$GLIB.tar.xz # 2.1s
+- wget http://ftp.gnome.org/pub/gnome/sources/glib/$GLIB_VERSION/$GLIB.tar.xz # 2.1s
 # - wget https://git.gnome.org/browse/glib/snapshot/$GLIB.tar.xz # 35s
 - tar --xz --extract --file=$GLIB.tar.xz
 - ls --color
