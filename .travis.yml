@@ -12,9 +12,10 @@ addons:
     # - ubuntu-toolchain-r-test
     packages:
     # as requested by configure
+    # - 
     # - gcc-4.9
 before_install:
-- apt-cache policy libglib2.0-dev
+- apt-cache policy libglib2.0-dev libmount-dev
 install:
 - wget http://ftp.gnome.org/pub/gnome/sources/glib/2.54/$GLIB.tar.xz # 2.1s
 # - wget https://git.gnome.org/browse/glib/snapshot/$GLIB.tar.xz # 35s
