@@ -3,7 +3,7 @@
 language: c
 compiler:
 - clang
-# - gcc # finding libmount compatible version...
+- gcc
 env:
   global:
   matrix:
@@ -23,15 +23,15 @@ matrix:
 addons:
   apt:
     sources:
-    # - ubuntu-toolchain-r-test
-    # - llvm-toolchain-trusty-5.0
-    - debian-sid
+    - ubuntu-toolchain-r-test # TODO better put it in the matrix!
+    - llvm-toolchain-trusty-5.0 # TODO better put it in the matrix!
+    # - debian-sid # This is ok for packages with little dependencies like libmount-dev, but not for clang!
     packages:
     # as requested by configure
     - libmount-dev
     # - gcc-4.9
-    # - gcc-7
-    # - clang-5.0
+    - gcc-7 # TODO better put it in the matrix!
+    - clang-5.0 # TODO better put it in the matrix!
 before_install:
 - apt-cache policy libglib2.0-dev libmount-dev libelf-dev
 install:
