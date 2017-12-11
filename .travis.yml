@@ -24,14 +24,14 @@ addons:
   apt:
     sources:
     # - ubuntu-toolchain-r-test
-    - llvm-toolchain-trusty-5.0
+    # - llvm-toolchain-trusty-5.0
     - debian-sid
     packages:
     # as requested by configure
     - libmount-dev
     # - gcc-4.9
     # - gcc-7
-    - clang-5.0
+    # - clang-5.0
 before_install:
 - apt-cache policy libglib2.0-dev libmount-dev libelf-dev
 install:
