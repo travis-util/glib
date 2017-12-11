@@ -1,5 +1,5 @@
-dist: xenial
-group: edge
+# dist: xenial
+# group: edge
 language: c
 compiler:
 - clang
@@ -22,7 +22,7 @@ matrix:
   #^ libmount-dev (2.20.1-5.1ubuntu20.9) from Ubuntu 14.04 probably too old.
 addons:
   apt:
-    sources:
+    # sources:
     # - ubuntu-toolchain-r-test
     # - llvm-toolchain-trusty-5.0
     packages:
