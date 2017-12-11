@@ -7,12 +7,15 @@ compiler:
 env:
   global:
   matrix:
-  - GLIB=glib-2.41.5 GLIB_VERSION=2.41
-  # - GLIB=glib-2.40.2 GLIB_VERSION=2.40 # OK
-  - GLIB=glib-2.44.1 GLIB_VERSION=2.44
-  - GLIB=glib-2.46.2 GLIB_VERSION=2.46
-  - GLIB=glib-2.50.3 GLIB_VERSION=2.50
-  - GLIB=glib-2.55.0 GLIB_VERSION=2.55
+  - GLIB=glib-2.41.5  GLIB_VERSION=2.41
+  # - GLIB=glib-2.40.2  GLIB_VERSION=2.40 # OK
+  - GLIB=glib-2.44.1  GLIB_VERSION=2.44
+  - GLIB=glib-2.46.2  GLIB_VERSION=2.46
+  - GLIB=glib-2.47.92 GLIB_VERSION=2.47
+  - GLIB=glib-2.48.2  GLIB_VERSION=2.48
+  - GLIB=glib-2.49.7  GLIB_VERSION=2.49  
+  - GLIB=glib-2.50.3  GLIB_VERSION=2.50
+  - GLIB=glib-2.55.0  GLIB_VERSION=2.55
 matrix:
   allow_failures:
   - env: GLIB=glib-2.54.2 GLIB_VERSION=2.54
