@@ -44,6 +44,12 @@ install:
 - cat INSTALL
 - ./configure --help
 - ./configure --prefix=/tmp/local
+- mount
+- mount | grep tmpfs
+- apt-cache policy python-psutil
+# len(psutil.Process().cpu_affinity())
+- MAKEFLAGS="--jobs=2"
+- echo MAKEFLAGS
 
 script:
 - make && make install
