@@ -32,6 +32,7 @@ addons:
     # - gcc-4.9
     - gcc-7 # TODO better put it in the matrix!
     - clang-5.0 # TODO better put it in the matrix!
+    - python-psutil # to detect the number of CPU available
 before_install:
 - apt-cache policy libglib2.0-dev libmount-dev libelf-dev
 install:
@@ -46,10 +47,11 @@ install:
 - ./configure --prefix=/tmp/local
 - mount
 - mount | grep tmpfs
+- ls -l --color /run
 - apt-cache policy python-psutil
-# len(psutil.Process().cpu_affinity())
+- python -c 'import psutil ; print len(psutil.Process().cpu_affinity())'
 - MAKEFLAGS="--jobs=2"
-- echo MAKEFLAGS
+- echo $MAKEFLAGS
 
 script:
 - make && make install
