@@ -17,22 +17,38 @@ env:
   - GLIB=glib-2.50.3  GLIB_VERSION=2.50
   - GLIB=glib-2.55.0  GLIB_VERSION=2.55
 matrix:
+  include:
+  - os: linux
+    addons:
+      apt:
+        sources:
+        - llvm-toolchain-trusty-5.0
+        packages:
+        - clang-5.0
+  - os: linux
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - gcc-7
+#     env:
+#     - MATRIX_EVAL="CC=clang-3.6 && CXX=clang++-3.6"
   allow_failures:
   - env: GLIB=glib-2.54.2 GLIB_VERSION=2.54
   #^ libmount-dev (2.20.1-5.1ubuntu20.9) from Ubuntu 14.04 probably too old.
 addons:
   apt:
     sources:
-    - ubuntu-toolchain-r-test # TODO better put it in the matrix!
-    - llvm-toolchain-trusty-5.0 # TODO better put it in the matrix!
+    # - ubuntu-toolchain-r-test # TODO better put it in the matrix!
+    # - llvm-toolchain-trusty-5.0 # TODO better put it in the matrix!
     # - debian-sid # This is ok for packages with little dependencies like libmount-dev, but not for clang!
     packages:
     # as requested by configure
     - libmount-dev
     # - gcc-4.9
-    - gcc-7 # TODO better put it in the matrix!
-    - clang-5.0 # TODO better put it in the matrix!
-    - python-psutil # to detect the number of CPU available
+    # - gcc-7 # TODO better put it in the matrix!
+    # - clang-5.0 # TODO better put it in the matrix!
 before_install:
 - apt-cache policy libglib2.0-dev libmount-dev libelf-dev
 install:
@@ -48,7 +64,8 @@ install:
 - mount
 - mount | grep tmpfs
 - ls -l --color /run
-- apt-cache policy python-psutil
+# - apt-cache policy python-psutil
+- pip install --user psutil
 - python -c 'import psutil ; print len(psutil.Process().cpu_affinity())'
 - MAKEFLAGS="--jobs=2"
 - echo $MAKEFLAGS
