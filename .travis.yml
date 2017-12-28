@@ -3,19 +3,7 @@
 language: c
 compiler:
 - clang
-    addons:
-      apt:
-        sources:
-        - llvm-toolchain-trusty-5.0
-        packages:
-        - clang-5.0
 - gcc
-    addons:
-      apt:
-        sources:
-        - ubuntu-toolchain-r-test
-        packages:
-        - gcc-7
 env:
   global:
   matrix:
@@ -29,10 +17,7 @@ env:
   - GLIB=glib-2.50.3  GLIB_VERSION=2.50
   - GLIB=glib-2.55.0  GLIB_VERSION=2.55
 matrix:
-  include:
-#   - os: linux
-#     compiler:
-#     - clang
+#   include:
 #   - os: linux
 #     addons:
 #       apt:
@@ -40,9 +25,6 @@ matrix:
 #         - llvm-toolchain-trusty-5.0
 #         packages:
 #         - clang-5.0
-#   - os: linux
-#     compiler:
-#     - gcc
 #   - os: linux
 #     addons:
 #       apt:
