@@ -1,9 +1,21 @@
 # dist: xenial
 # group: edge
 language: c
-# compiler:
-# - clang
-# - gcc
+compiler:
+- clang
+    addons:
+      apt:
+        sources:
+        - llvm-toolchain-trusty-5.0
+        packages:
+        - clang-5.0
+- gcc
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - gcc-7
 env:
   global:
   matrix:
@@ -18,26 +30,26 @@ env:
   - GLIB=glib-2.55.0  GLIB_VERSION=2.55
 matrix:
   include:
-  - os: linux
-    compiler:
-    - clang
-  - os: linux
-    addons:
-      apt:
-        sources:
-        - llvm-toolchain-trusty-5.0
-        packages:
-        - clang-5.0
-  - os: linux
-    compiler:
-    - gcc
-  - os: linux
-    addons:
-      apt:
-        sources:
-        - ubuntu-toolchain-r-test
-        packages:
-        - gcc-7
+#   - os: linux
+#     compiler:
+#     - clang
+#   - os: linux
+#     addons:
+#       apt:
+#         sources:
+#         - llvm-toolchain-trusty-5.0
+#         packages:
+#         - clang-5.0
+#   - os: linux
+#     compiler:
+#     - gcc
+#   - os: linux
+#     addons:
+#       apt:
+#         sources:
+#         - ubuntu-toolchain-r-test
+#         packages:
+#         - gcc-7
 #     env:
 #     - MATRIX_EVAL="CC=clang-3.6 && CXX=clang++-3.6"
   allow_failures:
