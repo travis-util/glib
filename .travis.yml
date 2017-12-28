@@ -1,9 +1,9 @@
 # dist: xenial
 # group: edge
 language: c
-compiler:
-- clang
-- gcc
+# compiler:
+# - clang
+# - gcc
 env:
   global:
   matrix:
@@ -19,12 +19,18 @@ env:
 matrix:
   include:
   - os: linux
+    compiler:
+    - clang
+  - os: linux
     addons:
       apt:
         sources:
         - llvm-toolchain-trusty-5.0
         packages:
         - clang-5.0
+  - os: linux
+    compiler:
+    - gcc
   - os: linux
     addons:
       apt:
