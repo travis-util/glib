@@ -1,6 +1,6 @@
 # dist: xenial
 # group: edge
-language: c
+language: cpp
 compiler:
 - clang
 - gcc
@@ -24,7 +24,7 @@ matrix:
 #         sources:
 #         - llvm-toolchain-trusty-5.0
 #         packages:
-#         - clang-5.0
+#         - clang-5.0 # It is now the default one no more need to update!
 #   - os: linux
 #     addons:
 #       apt:
@@ -67,7 +67,7 @@ install:
 # - apt-cache policy python-psutil
 - pip install --user psutil
 - python -c 'import psutil ; print len(psutil.Process().cpu_affinity())'
-- MAKEFLAGS="--jobs=2"
+- MAKEFLAGS="--jobs=$(python -c 'import psutil ; print len(psutil.Process().cpu_affinity())')"
 - echo $MAKEFLAGS
 
 script:
