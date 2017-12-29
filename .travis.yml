@@ -73,3 +73,5 @@ install:
 script:
 - make && make install
 - make test || true
+- iostat
+- uptime
