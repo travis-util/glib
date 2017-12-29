@@ -61,18 +61,18 @@ install:
 - cat INSTALL
 - ./configure --help
 - ./configure --prefix=/tmp/local
+
 - mount
 - mount | grep tmpfs
 - ls -l --color /run
-# - apt-cache policy python-psutil
+# In sudo mode tmpfs size could be inceased and compilation could be made there.
+
 - pip install --user psutil
-- python -c 'import psutil ; print len(psutil.Process().cpu_affinity())'
 - JOBS="$(python -c 'import psutil ; print len(psutil.Process().cpu_affinity())')" # 2 jobs at a time in make
 
 script:
 - apt-cache policy make
-- make --version
-- make --jobs=$JOBS --output-sync=recurse && make install --jobs=$JOBS --output-sync=recurse
-- make --jobs=$JOBS --output-sync=recurse test || true
+- make --version # Waiting for version 4.0 to be able to use --output-sync=recurse
+- make --jobs=$JOBS && make install --jobs=$JOBS
+- make --jobs=$JOBS test || true
 - echo $JOBS
-- echo $MAKEFLAGS
