@@ -67,9 +67,10 @@ install:
 # - apt-cache policy python-psutil
 - pip install --user psutil
 - python -c 'import psutil ; print len(psutil.Process().cpu_affinity())'
-- MAKEFLAGS="j$(python -c 'import psutil ; print len(psutil.Process().cpu_affinity())')" # 2 jobs at a time in make
+- JOBS="$(python -c 'import psutil ; print len(psutil.Process().cpu_affinity())')" # 2 jobs at a time in make
 
 script:
-- make --output-sync=recurse && make install
-- make test || true
+- make --jobs=$JOBS --output-sync=recurse && make install --jobs=$JOBS --output-sync=recurse
+- make --jobs=$JOBS --output-sync=recurse test || true
+- echo $JOBS
 - echo $MAKEFLAGS
