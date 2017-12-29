@@ -81,7 +81,7 @@ script:
 - make --jobs=$JOBS && make install --jobs=$JOBS
 - make --jobs=$JOBS test || true
 - find $PREFIX -name pkgconfig
-- ls $PKG_CONFIG_PATH
+- ls -rtl $PKG_CONFIG_PATH
 - echo $JOBS
 
 # Using ccache may help speedup compilation:
