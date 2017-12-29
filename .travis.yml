@@ -6,6 +6,7 @@ compiler:
 - gcc
 env:
   global:
+  - PREFIX=/tmp/local
   matrix:
   # - GLIB=glib-2.40.2  GLIB_VERSION=2.40 # OK
   # - GLIB=glib-2.41.5  GLIB_VERSION=2.41
@@ -49,6 +50,8 @@ addons:
     # - gcc-4.9
     # - gcc-7 # TODO better put it in the matrix!
     # - clang-5.0 # TODO better put it in the matrix!
+
+
 before_install:
 - apt-cache policy libglib2.0-dev libmount-dev libelf-dev
 install:
@@ -60,7 +63,7 @@ install:
 - ls --color
 - cat INSTALL
 - ./configure --help
-- ./configure --prefix=/tmp/local
+- ./configure --prefix=$PREFIX
 
 - mount
 - mount | grep tmpfs
@@ -76,6 +79,7 @@ script:
 # https://www.gnu.org/software/make/manual/html_node/Parallel-Output.html
 - make --jobs=$JOBS && make install --jobs=$JOBS
 - make --jobs=$JOBS test || true
+- find $PREFIX -name pkgconfig
 - echo $JOBS
 
 # Using ccache may help speedup compilation:
