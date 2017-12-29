@@ -66,6 +66,7 @@ install:
 - mount | grep tmpfs
 - ls -l --color /run
 # In sudo mode tmpfs size could be inceased and compilation could be made there.
+# https://wiki.archlinux.org/index.php/Tmpfs
 
 - pip install --user psutil
 - JOBS="$(python -c 'import psutil ; print len(psutil.Process().cpu_affinity())')" # 2 jobs at a time in make
@@ -80,3 +81,7 @@ script:
 # Using ccache may help speedup compilation:
 # https://blog.travis-ci.com/2016-05-03-caches-are-coming-to-everyone
 # https://docs.travis-ci.com/user/caching/
+# https://wiki.archlinux.org/index.php/Ccache
+# http://ccache.samba.org/manual.html#_description
+
+# https://wiki.archlinux.org/index.php/Makepkg#Improving_compile_times
