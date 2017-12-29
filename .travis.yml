@@ -40,7 +40,7 @@ matrix:
 addons:
   apt:
     sources:
-    # - ubuntu-toolchain-r-test # TODO better put it in the matrix!
+    - ubuntu-toolchain-r-test # TODO better put it in the matrix!
     # - llvm-toolchain-trusty-5.0 # TODO better put it in the matrix!
     # - debian-sid # This is ok for packages with little dependencies like libmount-dev, but not for clang!
     packages:
@@ -70,6 +70,8 @@ install:
 - JOBS="$(python -c 'import psutil ; print len(psutil.Process().cpu_affinity())')" # 2 jobs at a time in make
 
 script:
+- apt-cache policy make
+- make --version
 - make --jobs=$JOBS --output-sync=recurse && make install --jobs=$JOBS --output-sync=recurse
 - make --jobs=$JOBS --output-sync=recurse test || true
 - echo $JOBS
