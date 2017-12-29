@@ -7,6 +7,7 @@ compiler:
 env:
   global:
   - PREFIX=/tmp/local
+  - PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig
   matrix:
   # - GLIB=glib-2.40.2  GLIB_VERSION=2.40 # OK
   # - GLIB=glib-2.41.5  GLIB_VERSION=2.41
@@ -80,6 +81,7 @@ script:
 - make --jobs=$JOBS && make install --jobs=$JOBS
 - make --jobs=$JOBS test || true
 - find $PREFIX -name pkgconfig
+- ls $PKG_CONFIG_PATH
 - echo $JOBS
 
 # Using ccache may help speedup compilation:
