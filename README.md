@@ -8,7 +8,7 @@ Dowloading and installing glib
 Wikipedia | https://en.wikipedia.org/wiki/GLib
 Compiler | clang, gcc, ...?
 Configuration https://en.wikipedia.org/wiki/Configure_script | https://en.wikipedia.org/wiki/GNU_Build_System
-Windows build | (cross compilation or quite a task) https://github.com/GNOME/glib/blob/master/README.win32
+Windows build | (cross compilation or quite a task) https://github.com/GNOME/glib/blob/master/README.win32 https://www.google.ca/search?q=how+to+build+glib+on+windows
 
 * https://gtk.org
 * https://git.gnome.org/browse/glib
